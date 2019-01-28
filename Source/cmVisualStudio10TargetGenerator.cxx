@@ -3819,12 +3819,12 @@ void cmVisualStudio10TargetGenerator::WriteProjectReferences(Elem& e0)
       path += dt->GetName();
       path += computeProjectFileExtension(dt);
     }
-    ConvertToWindowsSlash(path);
+    /*ConvertToWindowsSlash(path);
     Elem e2(e1, "ProjectReference");
     e2.Attribute("Include", path);
     e2.Element("Project", "{" + this->GlobalGenerator->GetGUID(name) + "}");
     e2.Element("Name", name);
-    this->WriteDotNetReferenceCustomTags(e2, name);
+    this->WriteDotNetReferenceCustomTags(e2, name);*/
 
     // If the dependency target is not managed (compiled with /clr or
     // C# target) we cannot reference it and have to set
@@ -3846,8 +3846,8 @@ void cmVisualStudio10TargetGenerator::WriteProjectReferences(Elem& e0)
       referenceNotManaged = !dt->IsCSharpOnly();
     }
     if (referenceNotManaged) {
-      e2.Element("ReferenceOutputAssembly", "false");
-      e2.Element("CopyToOutputDirectory", "Never");
+      //e2.Element("ReferenceOutputAssembly", "false");
+      //e2.Element("CopyToOutputDirectory", "Never");
     }
   }
 }
